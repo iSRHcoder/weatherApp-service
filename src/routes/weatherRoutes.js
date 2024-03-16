@@ -9,7 +9,7 @@ weatherRouter.get('/', async (req, res) => {
 
   if (cityName) {
     const data = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&limit=5&appid=88f2c30681ef3d7fd287876f375145f0`,
+      `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&limit=5&appid=${process.env.WEATHER_API_KEY}`,
     );
     const apiRes = await data.json();
     return res.status(200).json({
@@ -20,7 +20,7 @@ weatherRouter.get('/', async (req, res) => {
 
   if (lat && lon) {
     const data = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&l&appid=88f2c30681ef3d7fd287876f375145f0`,
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&l&appid=${process.env.WEATHER_API_KEY}`,
     );
     const apiRes = await data.json();
     return res.status(200).json({
